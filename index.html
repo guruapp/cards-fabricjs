@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+cards
+</title>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.4/fabric.min.js"></script>
+<script type="text/javascript">
+
+var ran = function()
+{
+ var canvas = new fabric.Canvas('c'); 
+
+fabric.Image.fromURL("images/card" + Math.floor((Math.random() * 52) + 1)+".png", function(oImg) {
+  oImg.scale(1).setFlipX(false);
+  oImg.rotate(1);
+  document.getElementById("c").height = "220";
+  document.getElementById("c").width = "500";
+  oImg.animate('left', 350, {
+  onChange: canvas.renderAll.bind(canvas),
+  duration: 1000,
+  easing: fabric.util.ease.easeOutBounce
+});
+  canvas.add(oImg);
+});
+
+
+}
+</script>
+</head>
+<body>
+<div>
+<button onclick="ran();" value="Click me">Click me</button>  
+<canvas id="c" width=500 height=220 ></canvas>
+<img src="images/card0.png" id="my-image">
+</div>
+
+
+</body>
+</html>
